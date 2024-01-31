@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <link rel="manifest" href="manifest.json">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حصن المسلم المتين</title>
+    <style>
+        body {
+            direction: rtl;
+            background-color: cyan;
+            color: black;
+            font-family: 'Tahoma', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #azkar_sabah,
+        #azkar_masaa {
+            cursor: pointer;
+            font-size: 12px;
+            text-decoration: none;
+            position: absolute;
+            right: 15px;
+        }
+
+        @media screen and (min-width: 768px) {
+            body,
+            #azkar_masaa,
+            #azkar_sabah {
+                font-size: 25px;
+            }
+            #toggle-btn,
+            #hide-all-btn {
+                cursor: pointer;
+                background-color: rgb(143, 184, 255);
+                color: black;
+                border-radius: 5px;
+                font-size: 1px;
+                margin-right: 10px;
+            }
+        }
+
+        @media screen and (max-width: 767px) {
+            #toggle-btn,
+            #hide-all-btn {
+                padding: 10px 15px;
+            }
+
+            body {
+                font-size: 12px;
+            }
+        }
+        #azkar-sabah {
+            color: rgb(255, 0, 0);
+            margin-bottom: 30px;
+            position:absolute;
+            top: 145px;
+            text-decoration:none;
+        }
+
+        #azkar-masaa {
+            position:absolute;
+            color: blue;
+            top: 220px;
+            text-decoration:none;
+        }
+
+        #toggle-btn,
+        #hide-all-btn {
+            cursor: pointer;
+            background-color: rgb(143, 184, 255);
+            color: black;
+            padding: 20px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-right: 10px;
+        }
+
+        header {
+            text-align: up;
+            padding: 10px;
+        }
+
+        #main-nav {
+            display: none;
+        }
+
+        nav {
+            text-align: up;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        nav ul li {
+            display: block;
+            margin-bottom: 150px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: rgb(255, 255, 255);
+        }
+
+        section {
+            text-align: up;
+            padding: 10px;
+            display: none;
+            margin-top: 20px;
+        }
+        #adhkar-sabah-list {
+            list-style: none; 
+        }
+
+        #adhkar-sabah-list li {
+            position: relative; 
+            font-size: 18px; 
+        }
+
+        #adhkar-sabah-list li::before {
+            content: "•";
+            color: green; 
+            font-size: 24px;
+        }
+
+        #toggle-btn {
+            cursor: pointer;
+            background-color: transparent; 
+            border: none;
+            padding: 0; 
+        }
+        #azkar_sabah {
+            color: rgb(255, 0, 0);
+            margin-top: 15px;
+            position: absolute;
+            font-size:15px;
+            margin-left:0px;
+            text-decoration: none;
+        }
+
+        #azkar_sabah h2 {
+            color: black;
+            max-width: 780px;
+            display: inline-block;
+            word-wrap: break-word;
+        }
+
+        .burger-menu {
+            width: 30px;
+            height: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .numberer {
+            background-color: red;
+            color: white;
+            border: black;
+            border-radius: 5px;
+            padding: 7px 15px;
+            font-size: 20px;
+        }
+
+        .line {
+            width: 100%;
+            height: 3px;
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <button id="toggle-btn" onclick="toggleMenu();">
+            <div class="burger-menu">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </button>
+    </header>
+    <nav id="main-nav">
+        <ul>
+            
+            <li><a href="#" onclick="toggleContent('adhkar')">الأذكار</a></li>
+            <li><a href="#" onclick="toggleContent('quran')">القرآن</a></li>
+            <li><a href="#" onclick="toggleContent('hadith')">الأدعية</a></li>
+        </ul>
+    </nav>
+
+    <section id="adhkar" style="display: none;">
+        <ul id="adhkar-list">
+            <li><a id="azkar-sabah" href="#azkar_sabah" onclick="toggleContent('azkar_sabah')">أذكار الصباح</a></li>
+            <li><a id="azkar-masaa" href="#azkar_masaa" onclick="toggleContent('azkar')">أذكار المساء</a></li>
+        </ul>
+    </section>
+    
+    <section id="azkar_sabah">
+        <ul id="adhkar-sabah-list">
+            <li>
+                <h2><a>أَصبَحْنا على فِطرةِ الإسلامِ، وعلى كَلِمةِ الإخلاصِ، وعلى دِينِ نَبيِّنا محمَّدٍ صلَّى اللهُ عليه وسلَّمَ، وعلى مِلَّةِ أبِينا إبراهيمَ، حَنيفًا مُسلِمًا، وما كان مِنَ المُشرِكينَ.</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">1</button>
+            </li>
+            <li>
+                <h2><a>لا إله إلا الله وحده لا شريك له، له الملك وله الحمد وهو على كل شيء قدير.</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">100</button>
+            </li>
+            <li>
+                <h2><a>اللهم أنت ربي لا إله إلا أنت ، عليك توكلت ، وأنت رب العرش العظيم , ما شاء الله كان ، وما لم يشأ لم يكن ، ولا حول ولا قوة إلا بالله العلي العظيم , أعلم أن الله على كل شيء قدير ، وأن الله قد أحاط بكل شيء علما , اللهم إني أعوذ بك من شر نفسي ، ومن شر كل دابة أنت آخذ بناصيتها ، إن ربي على صراط مستقيم.</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">1</button>
+            </li>
+            <li>
+                <h2><a>يا رب , لك الحمد كما ينبغي لجلال وجهك , ولعظيم سلطانك</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">3</button>
+            </li>
+            <li>
+                <h2><a>أستغفر الله العظيم الذي لا إله إلا هو، الحي القيوم، وأتوب إليه. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">3</button>
+            </li>
+            <li>
+                <h2><a>اللهم إني أعوذ بك من الهم والحزن، وأعوذ بك من العجز والكسل، وأعوذ بك من الجبن والبخل، وأعوذ بك من غلبة الدين، وقهر الرجال. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">3</button>
+            </li>
+            <li>
+                <h2><a>اللهم إنا نعوذ بك من أن نشرك بك شيئا نعلمه ، ونستغفرك لما لا نعلمه. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">3</button>
+            </li>
+            <li>
+                <h2><a>اللهم صل وسلم وبارك على نبينا محمد. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">10</button>
+            </li>
+            <li>
+                <h2><a>أَعـوذُ بِكَلِمـاتِ اللّهِ التّـامّـاتِ مِنْ شَـرِّ ما خَلَـق. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">3</button>
+            </li>
+            <li>
+                <h2><a>اللهـم عالـم الغـيب والشـهادة فاطـر السماوات والأرض رب كـل شـيء ومليـكه ، أشهـد أن لا إلـه إلا أنت ، أعـوذ بك من شـر نفسـي ومن شـر الشيـطان وشركه ، وأن أقتـرف علـى نفسـي سوءا أو أجـره إلـى مسـلم. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">1</button>
+            </li>
+            <li>
+                <h2><a>أصبـحـنا وأصبـح المـلك لله رب العـالمـين ، اللهـم إنـي أسـألـك خـير هـذا الـيوم ، فـتحه ، ونصـره ، ونـوره وبـركتـه ، وهـداه ، وأعـوذ بـك مـن شـر ما فـيه وشـر ما بعـده. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">1</button>
+            </li>
+            <li>
+                <h2><a>اللهـم ما أصبـح بي مـن نعـمة أو بأحـد مـن خلـقك ، فمـنك وحـدك لا شريك لـك ، فلـك الحمـد ولـك الشكـر. </a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">1</button>
+            </li>
+            <li>
+                <h2><a>أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">100</button>
+            </li>
+            <li>
+                <h2><a>سُبْحـانَ اللهِ وَبِحَمْـدِهِ.</a></h2>
+                <button class="numberer" data-id="0" onclick="decrementCounter(this)">100</button>
+            </li>
+
+            
+        </ul>
+    </section>
+
+    <section id="quran" style="display: none;">
+        <h2>القرآن</h2>
+    </section>
+
+ <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function (section) {
+            section.style.display = 'none';
+        });
+    });
+
+    function toggleMenu() {
+        var nav = document.getElementById('main-nav');
+        var sections = document.querySelectorAll('section');
+
+        if (nav.style.display === 'none' || nav.style.display === '') {
+            nav.style.display = 'block';
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+        } else {
+            nav.style.display = 'none';
+            sections.forEach(function (section) {
+                section.style.display = 'none';
+            });
+        }
+    }
+    function decrementCounter(button) {
+        var counterValue = parseInt(button.innerText);
+        if (counterValue == 1) {
+        button.style.backgroundColor = 'green'
+        }
+        if (counterValue > 0) {
+            button.innerText = (counterValue - 1).toString();
+        }
+    }
+    function toggleContent(contentId) {
+        var sections = document.querySelectorAll('section');
+        sections.forEach(function (section) {
+            if (section.id === contentId) {
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+        });
+    }
+
+</script>
+
+
+
+
+</body>
+
+</html>
